@@ -1,5 +1,6 @@
-import requests
 import copy
+import requests
+import vcr
 
 
 class Hammock(object):
@@ -7,7 +8,7 @@ class Hammock(object):
 
     HTTP_METHODS = ['get', 'options', 'head', 'post', 'put', 'patch', 'delete']
 
-    def __init__(self, name=None, parent=None, append_slash=False, **kwargs):
+    def __init__(self, name=None, parent=None, append_slash=False, vcr_mode=False, **kwargs):
         """Constructor
 
         Arguments:
@@ -20,6 +21,7 @@ class Hammock(object):
         self._parent = parent
         self._append_slash = append_slash
         self._session = requests.session()
+        self._vcr_mode = vcr_mode
         for k, v in kwargs.items():
             orig = getattr(self._session, k)  # Let it throw exception
             if isinstance(orig, dict):
@@ -97,6 +99,10 @@ class Hammock(object):
         """
         Makes the HTTP request using requests module
         """
+        if self._vcr_mode:
+            with vcr.use_cassette('fixtures/cassette.json', serializer='json'):
+                return self._session.request(method, self._url(*args), **kwargs)
+
         return self._session.request(method, self._url(*args), **kwargs)
 
 
