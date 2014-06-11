@@ -140,7 +140,7 @@ For example::
     >>> print (api.foo.bar)  # Note that trailing slash
     'http://localhost:8000/foo/bar/'
 
-Simple _VCRpy integration for unittesting APIs, can be achieved by
+Simple VCRpy_ integration for unittesting APIs, can be achieved by
 passing the vcr_mode flag when instantiating the Hammock class::
 
     >>> api = hammock.Hammock('http://localhost:8000', vcr_mode=True)
