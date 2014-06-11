@@ -9,7 +9,8 @@ setup(
     author_email='kadirpekel@gmail.com',
     url='https://github.com/kadirpekel/hammock',
     install_requires=[
-        'requests>=1.1.0'
+        'requests>=1.1.0',
+        'vcrpy==1.0.2'
     ],
     tests_require=['httpretty==0.5.4'],
 )
