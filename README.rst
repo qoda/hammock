@@ -1,10 +1,10 @@
 ::
 
-     _                                   _     
-    | |                                 | |    
-    | |__  _____ ____  ____   ___   ____| |  _ 
+     _                                   _
+    | |                                 | |
+    | |__  _____ ____  ____   ___   ____| |  _
     |  _ \(____ |    \|    \ / _ \ / ___) |_/ )
-    | | | / ___ | | | | | | | |_| ( (___|  _ ( 
+    | | | / ___ | | | | | | | |_| ( (___|  _ (
     |_| |_\_____|_|_|_|_|_|_|\___/ \____)_| \_)
 
 Hammock is a fun module lets you deal with rest APIs by converting them into dead simple programmatic APIs.
@@ -139,6 +139,11 @@ For example::
     >>> api = hammock.Hammock('http://localhost:8000', append_slash=True)
     >>> print (api.foo.bar)  # Note that trailing slash
     'http://localhost:8000/foo/bar/'
+
+Simple [[vcrpy]([[Homebrew](http://mxcl.github.com/homebrew/)])] integration for unittesting APIs, can be achieved by
+passing the vcr_mode flag when instantiating the Hammock class::
+
+    >>> api = hammock.Hammock('http://localhost:8000', vcr_mode=True)
 
 Contributors
 ------------
