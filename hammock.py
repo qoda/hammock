@@ -100,7 +100,7 @@ class Hammock(object):
         Makes the HTTP request using requests module
         """
         if self._vcr_mode:
-            with vcr.use_cassette('fixtures/cassette.json', serializer='json'):
+            with vcr.use_cassette('fixtures/cassette.json', serializer='json', record_mode='new_episodes'):
                 return self._session.request(method, self._url(*args), **kwargs)
 
         return self._session.request(method, self._url(*args), **kwargs)
